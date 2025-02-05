@@ -66,14 +66,14 @@ const Applyleave = () => {
               Time Off Incase of Overtime
             </option>
           </select>
-          <div className="flex w-full gap-4 mb-4">
+          <div className="flex w-[100%] gap-4 mb-4">
             <div className="w-1/2">
               <DatePicker
                 selected={formData.startDate}
                 onChange={(date) =>
                   setFormData({ ...formData, startDate: date })
                 }
-                className="p-[20px] w-[600px] text-[#00913E] rounded-lg border border-[#00913E] focus:outline-none focus:ring-0 focus:border-[#80aa92] placeholder:text-[#00913E]"
+                className="p-[20px] w-[550px] text-[#00913E] rounded-lg border border-[#00913E] focus:outline-none focus:ring-0 focus:border-[#80aa92] placeholder:text-[#00913E]"
                 placeholderText="From Date"
                 name="startDate"
               />
@@ -82,7 +82,7 @@ const Applyleave = () => {
               <DatePicker
                 selected={formData.endDate}
                 onChange={(date) => setFormData({ ...formData, endDate: date })}
-                className="p-[20px] w-[600px] text-[#00913E] rounded-lg border border-[#00913E] focus:outline-none focus:ring-0 focus:border-[#80aa92] placeholder:text-[#00913E]"
+                className="p-[20px] w-[550px] text-[#00913E] rounded-lg border border-[#00913E] focus:outline-none focus:ring-0 focus:border-[#80aa92] placeholder:text-[#00913E]"
                 placeholderText="To Date"
                 name="endDate"
               />
