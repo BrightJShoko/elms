@@ -6,16 +6,14 @@ import { adminSignup } from "@/app/lib/actions";
 const signup = () => {
   return (
     <div className="bg-[#00913E]  shadow p-4 w-[100%] h-screen items-center flex justify-center overflow-hidden relative">
-      <div className=" absolute top-2 ">
+      <div className="bg-white rounded-lg shadow p-4  flex flex-col mt-4 items-center">
         <Image
           alt="Nav Icon"
           objectFit="contain"
-          width={200}
-          height={200}
+          width={100}
+          height={100}
           src="/gz.png"
         />
-      </div>
-      <div className="bg-white rounded-lg shadow p-4 pt-[90px] flex flex-col mt-20 items-center">
         <span className=" items-center content-center justify-center text-center text-[#00913E] text-[30px] font-extrabold">
           ADMIN SIGNUP
         </span>
