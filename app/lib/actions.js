@@ -104,7 +104,6 @@ export async function updateLeaveStatus(leaveId, newStatus) {
     await leave.save();
 
     return { success: `Leave request ${newStatus} by ${admin.firstname}.` };
-    revalidatePath("/admindashboard/manageleave");
   } catch (error) {
     console.error("Error updating leave status:", error.message);
     return { error: "Failed to update leave status." };

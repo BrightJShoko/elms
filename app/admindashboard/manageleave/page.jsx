@@ -9,6 +9,8 @@ const manageleave = async ({ searchParams }) => {
   const q = searchParams?.q || "";
   const page = searchParams?.page || 1;
   const { count, leaves } = await fetchAllEmployeeLeaves(q, page);
+  // console.log("leave:", leaves);
+  // console.log("leave.employeeId:", leaves.employeeId);
   return (
     <div className="bg-white rounded-lg shadow p-4 ">
       <div className="font-semibold text-[14px] text-[#00913E] mb-4">
@@ -55,11 +57,11 @@ const manageleave = async ({ searchParams }) => {
             {leaves.map((leave) => (
               <tr key={leave.id}>
                 <td className="border border-gray-300 p-2  relative font-medium text-[14px] text-[#00913E] ">
-                  {leave.employeeId.code}
+                  {leave.employeeId?.code || "N/A"}
                 </td>
                 <td className="border border-gray-300 p-2  relative font-medium text-[14px] text-[#00913E] ">
-                  {leave.employeeId.firstname} {}
-                  {leave.employeeId.lastname}
+                  {leave.employeeId?.firstname || "N/A"}{" "}
+                  {leave.employeeId?.lastname || ""}
                 </td>
                 <td className="border border-gray-300 p-2  relative font-medium text-[14px] text-[#00913E] ">
                   {leave.leaveType}
