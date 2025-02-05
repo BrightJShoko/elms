@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { fetchForCalender } from "@/app/lib/actions";
+import { fetchForCalender, fetchApprovedLeaves } from "@/app/lib/actions";
 
 const Calendar = () => {
   const [leaves, setLeaves] = useState([]);

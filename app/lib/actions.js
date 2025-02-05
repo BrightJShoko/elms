@@ -115,7 +115,7 @@ export async function fetchForCalender() {
   try {
     connectToDB();
     // Fetch leaves with employee details
-    const leaves = await Leave.find()
+    const leaves = await Leave.find({ status: "approved" })
       .populate("employeeId", "firstname lastname department") // Populate only necessary fields
       .select("employeeId leaveType startDate endDate reason status") // Select required fields
       .lean(); // Convert Mongoose documents to plain JS objects
