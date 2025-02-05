@@ -37,7 +37,7 @@ const Applyleave = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow p-4 ">
+    <div className="bg-white rounded-lg shadow p-4 w-[1130px] ">
       <div>
         <span className="font-semibold text-[14px] text-[#00913E] mb-4">
           Apply For Leave
@@ -73,7 +73,7 @@ const Applyleave = () => {
                 onChange={(date) =>
                   setFormData({ ...formData, startDate: date })
                 }
-                className="p-[20px] w-[550px] text-[#00913E] rounded-lg border border-[#00913E] focus:outline-none focus:ring-0 focus:border-[#80aa92] placeholder:text-[#00913E]"
+                className="p-[20px] w-[540px] text-[#00913E] rounded-lg border border-[#00913E] focus:outline-none focus:ring-0 focus:border-[#80aa92] placeholder:text-[#00913E]"
                 placeholderText="From Date"
                 name="startDate"
               />
@@ -82,7 +82,7 @@ const Applyleave = () => {
               <DatePicker
                 selected={formData.endDate}
                 onChange={(date) => setFormData({ ...formData, endDate: date })}
-                className="p-[20px] w-[550px] text-[#00913E] rounded-lg border border-[#00913E] focus:outline-none focus:ring-0 focus:border-[#80aa92] placeholder:text-[#00913E]"
+                className="p-[20px] w-[540px] text-[#00913E] rounded-lg border border-[#00913E] focus:outline-none focus:ring-0 focus:border-[#80aa92] placeholder:text-[#00913E]"
                 placeholderText="To Date"
                 name="endDate"
               />
