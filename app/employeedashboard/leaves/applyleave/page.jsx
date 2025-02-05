@@ -37,7 +37,7 @@ const Applyleave = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow p-4 w-[1130px] ">
+    <div className="bg-white rounded-lg shadow p-4 ">
       <div>
         <span className="font-semibold text-[14px] text-[#00913E] mb-4">
           Apply For Leave
@@ -66,29 +66,22 @@ const Applyleave = () => {
               Time Off Incase of Overtime
             </option>
           </select>
-          <div className="flex w-[100%] gap-4 mb-4">
-            <div className="w-1/2">
-              <DatePicker
-                selected={formData.startDate}
-                onChange={(date) =>
-                  setFormData({ ...formData, startDate: date })
-                }
-                className="p-[20px] w-[540px] text-[#00913E] rounded-lg border border-[#00913E] focus:outline-none focus:ring-0 focus:border-[#80aa92] placeholder:text-[#00913E]"
-                placeholderText="From Date"
-                name="startDate"
-              />
-            </div>
-            <div className="w-1/2">
-              <DatePicker
-                selected={formData.endDate}
-                onChange={(date) => setFormData({ ...formData, endDate: date })}
-                className="p-[20px] w-[540px] text-[#00913E] rounded-lg border border-[#00913E] focus:outline-none focus:ring-0 focus:border-[#80aa92] placeholder:text-[#00913E]"
-                placeholderText="To Date"
-                name="endDate"
-              />
-            </div>
+          <div className=" flex flex-col w-[100%] gap-2">
+            <DatePicker
+              selected={formData.startDate}
+              onChange={(date) => setFormData({ ...formData, startDate: date })}
+              className="  p-[20px]  w-[100%] text-[#00913E]  rounded-lg mb-[30px] border border-[#00913E]  focus:outline-none focus:ring-0 focus:border-[#80aa92]  placeholder:text-[#00913E]"
+              placeholderText="From Date"
+              name="startDate"
+            />
+            <DatePicker
+              selected={formData.endDate}
+              onChange={(date) => setFormData({ ...formData, endDate: date })}
+              className="  p-[20px]  w-[100%] text-[#00913E]  rounded-lg mb-[30px] border border-[#00913E]  focus:outline-none focus:ring-0 focus:border-[#80aa92]  placeholder:text-[#00913E]"
+              placeholderText="To Date"
+              name="endDate"
+            />
           </div>
-
           <textarea
             className="p-[20px] w-[100%] placeholder:text-[#00913E]  rounded-lg mb-[30px] border border-[#00913E]  focus:outline-none focus:ring-0 focus:border-[#80aa92]"
             value={formData.reason}
