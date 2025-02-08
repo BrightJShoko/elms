@@ -7,6 +7,7 @@ import Link from "next/link";
 import { fetchAdminLeaveStats, getLoggedInUser } from "@/app/lib/actions";
 
 const notificationsPath = "/admindashboard/notifications";
+const expiredPath = "/admindashboard/expired";
 export const Navbar = () => {
   const [user, setUser] = useState(null);
 
@@ -20,6 +21,7 @@ export const Navbar = () => {
 
   const [stats, setStats] = useState({
     pendingLeaves: 0,
+    expiredLeaves: 0,
   });
   useEffect(() => {
     const getStats = async () => {
@@ -64,6 +66,35 @@ export const Navbar = () => {
           </Link>
         </div>
       </div>
+      <div className=" flex-[1] flex-row items-center content-center relative ">
+        {stats.expiredLeaves > 0 && (
+          <div className="absolute -top-1 left-5 bg-red-500 text-white rounded-full w-[20px] h-[20px] text-xs flex items-center justify-center">
+            {stats.expiredLeaves}
+          </div>
+        )}
+        <div>
+          <Link href={expiredPath}>
+            {expiredPath === pathname ? (
+              <Image
+                alt="Expired Icon closed"
+                objectFit="contain"
+                width={25}
+                height={25}
+                src="/bin_open.png"
+              />
+            ) : (
+              <Image
+                alt="Expired Icon Closed"
+                objectFit="contain"
+                width={35}
+                height={35}
+                src="/bin_closed.png"
+              />
+            )}
+          </Link>
+        </div>
+      </div>
+
       <div className="flex flex-row mr-4 items-center">
         <div>
           <Image

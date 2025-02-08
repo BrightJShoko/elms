@@ -22,8 +22,32 @@ export async function fetchPendingLeavesNav(q, page) {
       JSON.stringify({ count: pendingLeaves.length, leaves: pendingLeaves })
     );
   } catch (error) {
-    console.error("Error fetching pending leaves:", error);
+    console.error("Error fetching  leaves:", error);
     return { count: 0, leaves: [] };
+  }
+}
+
+export async function fetchExpiredLeaves(q, page) {
+  const regex = new RegExp(q, "i");
+  const ITEM_PER_PAGE = 6;
+  try {
+    const today = new Date(); // Get today's date
+    await connectToDB();
+    const expiredLeaves = await Leave.find({
+      endDate: { $lt: today },
+      leaveType: { $regex: regex },
+    })
+      .populate("employeeId")
+      .limit(ITEM_PER_PAGE)
+      .skip(ITEM_PER_PAGE * (page - 1))
+      .sort({ createdAt: -1 });
+
+    return JSON.parse(
+      JSON.stringify({ count: expiredLeaves.length, expired: expiredLeaves })
+    );
+  } catch (error) {
+    console.error("Error fetching expired leaves:", error);
+    return { count: 0, expired: [] };
   }
 }
 

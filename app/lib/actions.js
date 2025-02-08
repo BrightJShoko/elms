@@ -17,19 +17,30 @@ export const fetchAdminLeaveStats = async () => {
   }
 
   try {
+    const today = new Date();
     connectToDB();
 
     const totalLeaves = await Leave.countDocuments();
     const approvedLeaves = await Leave.countDocuments({ status: "approved" });
+    const expiredLeaves = await Leave.countDocuments({
+      endDate: { $lt: today },
+    });
     const pendingLeaves = await Leave.countDocuments({ status: "pending" });
     const declinedLeaves = await Leave.countDocuments({ status: "declined" });
 
-    return { totalLeaves, approvedLeaves, pendingLeaves, declinedLeaves };
+    return {
+      totalLeaves,
+      approvedLeaves,
+      expiredLeaves,
+      pendingLeaves,
+      declinedLeaves,
+    };
   } catch (error) {
     console.error("Error fetching admin leave stats:", error);
     return {
       totalLeaves: 0,
       approvedLeaves: 0,
+      expiredLeaves: 0,
       pendingLeaves: 0,
       declinedLeaves: 0,
     };
@@ -381,6 +392,19 @@ export const deleteEmployee = async (formData) => {
     throw new Error("Failed to delete employee");
   }
   revalidatePath("/admindashboard/employees");
+};
+
+export const deleteExpiredLeave = async (formData) => {
+  const { id } = Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+    await Leave.findByIdAndDelete(id);
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to delete expired leave");
+  }
+  revalidatePath("/admindashboard/expired");
 };
 
 export const updateEmployee = async (formData) => {
